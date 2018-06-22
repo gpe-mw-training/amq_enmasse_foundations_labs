@@ -39,6 +39,9 @@ container.on('message', function (context) {
 });
 
 
-/* 0.17.1 on dev37 */
+/* 0.17.1 on dev37 
 container.connect({port:args.port,host:"messaging-MYSTANDARDPROJECTNAME.apps.dev37.openshift.opentlc.com", username:'MYUSERNAME', password:'MYPASSWORD', transport:'tls',rejectUnauthorized:false}).open_receiver({source:args.node, snd_settle_mode:0});
+*/
+
+container.connect({port:args.port,host:"messaging-myproject.127.0.0.1.nip.io", username:'developer', password:'abcd', transport:'tls',rejectUnauthorized:false}).open_receiver({source:args.node, snd_settle_mode:0});
 

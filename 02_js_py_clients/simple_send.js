@@ -41,6 +41,8 @@ container.on('disconnected', function (context) {
     sent = confirmed;
 });
 
-/* 0.17 on dev37 */
-container.connect({port:args.port,host:"messaging-MYSTANDARDPROJECTNAME.apps.dev37.openshift.opentlc.com", username:'MYUSERNAME', password:'MYPASSWORD', transport:'tls',rejectUnauthorized:false}).open_sender({target:args.node, snd_settle_mode:0});
+/* 0.17 on dev37
+container.connect({port:args.port,host:"messaging-MYSTANDARDPROJECTNAME.apps.dev37.openshift.opentlc.com", username:'MYUSERNAME', password:'MYPASSWORD', transport:'tls',rejectUnauthorized:false}).open_sender({target:args.node, snd_settle_mode:0}); */
 
+console.log("before connect");
+container.connect({port:args.port, host:"messaging-myproject.127.0.0.1.nip.io", username:'developer', password:'abcd', transport:'tls',rejectUnauthorized:false}).open_sender({target:args.node, snd_settle_mode:0});
