@@ -1,12 +1,12 @@
 {
-  "apiVersion": "enmasse.io/v1",
-  "kind": "AddressSpace",
-  "metadata": {
-    "name": "standard-addrspc",
-    "namespace": "standard-mt"
-  },
-  "spec": {
-    "type": "standard",
-    "plan": "unlimited-standard"
-  }
+    "apiVersion": "enmasse.io/v1alpha1",
+    "kind": "AddressSpace",
+    "metadata": {
+        "name": "std-mt",
+	"enmasse.io/namespace": "std-mt" 
+    },
+    "spec": {
+        "type": "standard",
+        "plan": "unlimited-standard"
+    }
 }

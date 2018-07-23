@@ -1,12 +1,12 @@
 {
-  "apiVersion": "enmasse.io/v1",
-  "kind": "AddressSpace",
-  "metadata": {
-    "name": "brokered-addrspc",
-    "namespace": "brokered-mt"
-  },
-  "spec": {
-    "type": "brokered",
-    "plan": "unlimited-brokered"
-  }
+    "apiVersion": "enmasse.io/v1alpha1",
+    "kind": "AddressSpace",
+    "metadata": {
+        "name": "amq-enmasse-e10d",
+	"enmasse.io/namespace": "amq-enmasse-e10d" 
+    },
+    "spec": {
+        "type": "standard",
+        "plan": "unlimited-standard"
+    }
 }
