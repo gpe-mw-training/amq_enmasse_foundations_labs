@@ -1,0 +1,12 @@
+{
+  "apiVersion": "enmasse.io/v1alpha1",
+  "kind": "Address",
+  "metadata": {
+      "addressSpace": "std-mt"
+  },
+  "spec": {
+    "address": "myqueue",
+    "type": "queue",
+    "plan": "pooled-queue"
+  }
+}
