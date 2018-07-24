@@ -2,11 +2,11 @@
     "apiVersion": "enmasse.io/v1alpha1",
     "kind": "AddressSpace",
     "metadata": {
-        "name": "amq-enmasse-e10d",
-	"enmasse.io/namespace": "amq-enmasse-e10d" 
+        "name": "brk-mt",
+	"enmasse.io/namespace": "brk-mt" 
     },
     "spec": {
-        "type": "standard",
-        "plan": "unlimited-standard"
+        "type": "brokered",
+        "plan": "unlimited-brokered"
     }
 }
