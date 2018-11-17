@@ -1,7 +1,7 @@
 apiVersion: enmasse.io/v1alpha1
 kind: AddressSpace
 metadata:
-  name: pubsubproj
+  name: brokpubsub
 spec:
-  type: brokered 
-  plan: brokered-unlimited
+  type: brokered
+  plan: brokered-single-broker
