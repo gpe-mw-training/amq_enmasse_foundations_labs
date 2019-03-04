@@ -1,0 +1,14 @@
+apiVersion: user.enmasse.io/v1alpha1
+kind: MessagingUser
+metadata:
+  name: brokpubsub.userb
+spec:
+  username: userb
+  authentication:
+    type: password
+    password: cGFzc3dvcmQ= # Base64 encoded
+  authorization:
+    - addresses: ["myqbrok", "queue1", "queue2", "topic*"]
+      operations: ["send", "recv"]
+    - addresses: ["anycast1"]
+      operations: ["send"]

@@ -1,0 +1,8 @@
+apiVersion: enmasse.io/v1alpha1
+kind: Address
+metadata:
+  name: brokpubsub.myqbrok
+spec:
+  address: myqbrok
+  type: queue
+  plan: brokered-queue
