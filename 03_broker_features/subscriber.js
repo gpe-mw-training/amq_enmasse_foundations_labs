@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-var args = require('../options.js').options({
+var args = require('./options.js').options({
       'client': { default: 'my-client', describe: 'name of identifier for client container'},
       'subscription': { default: 'my-subscription', describe: 'name of identifier for subscription'},
       't': { alias: 'topic', default: 'topic://PRICE.STOCK.NYSE.*', describe: 'name of topic to subscribe to'},

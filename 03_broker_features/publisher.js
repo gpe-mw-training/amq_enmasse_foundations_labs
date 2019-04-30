@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-var args = require('../options.js').options({
+var args = require('./options.js').options({
       't': { alias: 'topic', default: 'topic://PRICE.STOCK.NYSE.RHT', describe: 'name of topic to which messages are sent'},
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).usage('Usage: $0 [options] <messages>').help('help').argv;
