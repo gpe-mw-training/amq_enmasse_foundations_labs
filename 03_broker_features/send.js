@@ -15,17 +15,26 @@
  */
 
 var args = require('./options.js').options({
-      't': { alias: 'topic', default: 'topic://PRICE.STOCK.NYSE.RHT', describe: 'name of topic to which messages are sent'},
+      'n': { alias: 'node', default: 'examples', describe: 'name of node (e.g. queue or topic) to which messages are sent'},
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).usage('Usage: $0 [options] <messages>').help('help').argv;
 
 var connection = require('rhea').connect({'port':args.port,host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false});
-var sender = connection.open_sender(args.topic);
+var sender = connection.open_sender(args.node);
+var messages;
+if (args._.length > 0) {
+    messages = args._.map(JSON.parse);
+} else {
+    messages = [{application_properties:{colour:'red'},body:'panda'},
+                {application_properties:{colour:'green'},body:'grasshopper'},
+                {application_properties:{colour:'red'},body:'squirrel'},
+                {application_properties:{colour:'blue'},body:'whale'}];
+}
 sender.on('sendable', function(context) {
-    for (var i = 0; i < args._.length; i++) {
-        var m = args._[i];
-        console.log('sent ' + m);
-        sender.send({body:m});
+    for (var i = 0; i < messages.length; i++) {
+        var m = messages[i];
+        console.log('sent ' + m.application_properties.colour + '-' + m.body);
+        sender.send(m);
     }
     connection.close();
-});
+i});

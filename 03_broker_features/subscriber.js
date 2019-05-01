@@ -22,7 +22,7 @@ var args = require('./options.js').options({
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).help('help').argv;
 
-var connection = require('rhea').connect({port:args.port, host:"messaging-enmasse16rc4project.apps.dev37.openshift.opentlc.com",username:'kcuser', password:'kcpassword',transport:'tls',rejectUnauthorized:false,container_id:args.client});
+var connection = require('rhea').connect({port:args.port, host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false,container_id:args.client});
 
 connection.on('message', function (context) {
     if (context.message.body === 'detach') {

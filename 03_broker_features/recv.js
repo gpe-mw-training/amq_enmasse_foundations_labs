@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 var container = require('rhea');
+var filters = require('rhea/lib/filter.js');
 
 var args = require('./options.js').options({
+      's': { alias: 'selector', default: "colour = 'red'", describe: 'the selector string to use'},
       'm': { alias: 'messages', default: 100, describe: 'number of messages to expect'},
-      'n': { alias: 'node', default: 'examples', describe: 'name of node (e.g. queue) from which messages are received'},
+      'n': { alias: 'node', default: 'examples', describe: 'name of node (e.g. queue or topic) from which messages are received'},
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).help('help').argv;
 
@@ -25,12 +27,12 @@ var received = 0;
 var expected = args.messages;
 
 container.on('message', function (context) {
-    if (context.message.id && context.message.id < received) {
+    if (context.message.properties && context.message.properties.id && context.message.properties.id < received) {
         // ignore duplicate message
         return;
     }
     if (expected === 0 || received < expected) {
-        console.log(JSON.stringify(context.message.body))
+        console.log(context.message.body)
         if (++received === expected) {
             context.receiver.detach();
             context.connection.close();
@@ -38,7 +40,4 @@ container.on('message', function (context) {
     }
 });
 
-
-/* 0.17 on dev37 */
-container.connect({port:args.port,host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com", username:'userb', password:'password', transport:'tls',rejectUnauthorized:false}).open_receiver({source:args.node, snd_settle_mode:0});
-
+container.connect({'port':args.port,host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false}).open_receiver({source:{address:args.node, filter:filters.selector(args.selector)}});
