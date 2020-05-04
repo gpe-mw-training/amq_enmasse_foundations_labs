@@ -16,13 +16,13 @@
  */
 
 var args = require('./options.js').options({
-      'client': { default: 'my-client', describe: 'name of identifier for client container'},
-      'subscription': { default: 'my-subscription', describe: 'name of identifier for subscription'},
+    // 'client': { default: 'my-client', describe: 'name of identifier for client container'},
+    // 'subscription': { default: 'my-subscription', describe: 'name of identifier for subscription'},
       't': { alias: 'topic', default: 'topic://PRICE.STOCK.NYSE.*', describe: 'name of topic to subscribe to'},
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).help('help').argv;
 
-var connection = require('rhea').connect({port:args.port, host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false,container_id:args.client});
+var connection = require('rhea').connect({port:args.port, host:"messaging-15c065e-amq-online-infra.apps.cluster-76bb.76bb.example.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false,container_id:args.client});
 
 connection.on('message', function (context) {
     if (context.message.body === 'detach') {

@@ -19,7 +19,7 @@ var args = require('./options.js').options({
       'p': { alias: 'port', default: 5672, describe: 'port to connect to'}
     }).usage('Usage: $0 [options] <messages>').help('help').argv;
 
-var connection = require('rhea').connect({'port':args.port,host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false});
+var connection = require('rhea').connect({'port':args.port,host:"messaging-15c065e-amq-online-infra.apps.cluster-76bb.76bb.example.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false});
 var sender = connection.open_sender(args.topic);
 sender.on('sendable', function(context) {
     for (var i = 0; i < args._.length; i++) {

@@ -1,14 +1,14 @@
 apiVersion: user.enmasse.io/v1beta1
 kind: MessagingUser
 metadata:
-  name: brokpubsub.userb
+  name: mybrokeredspace.userb
 spec:
   username: userb
   authentication:
     type: password
     password: cGFzc3dvcmQ= # Base64 encoded
   authorization:
-    - addresses: ["myqbrok", "queue1", "queue2", "topic*"]
+    - addresses: ["mybrkqueueaddress", "price.stock.nyse.rht", "topic*"]
       operations: ["send", "recv"]
     - addresses: ["anycast1"]
       operations: ["send"]
