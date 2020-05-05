@@ -40,4 +40,4 @@ container.on('message', function (context) {
     }
 });
 
-container.connect({'port':args.port,host:"messaging-9l9jueu6co-amq-online-infra.apps-61b6.generic.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false}).open_receiver({source:{address:args.node, filter:filters.selector(args.selector)}});
+container.connect({'port':args.port,host:"messaging-15c065e-amq-online-infra.apps.cluster-76bb.76bb.example.opentlc.com",username:'userb', password:'password',transport:'tls',rejectUnauthorized:false}).open_receiver({source:{address:args.node, filter:filters.selector(args.selector)}});
