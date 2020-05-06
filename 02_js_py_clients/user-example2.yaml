@@ -1,14 +1,14 @@
 apiVersion: user.enmasse.io/v1beta1
 kind: MessagingUser
 metadata:
-  name: myspace.user1
+  name: myspace.user2
 spec:
-  username: user1
+  username: user2
   authentication:
     type: password
     password: cGFzc3dvcmQ= # Base64 encoded
   authorization:
-    - addresses: ["myqueue", "queue1", "queue2", "topic*"]
+    - addresses: ["myqueue", "queue1", "queue2", "topic*", "mytopic", "myanycast", "mymulticast"]
       operations: ["send", "recv"]
     - addresses: ["anycast1"]
       operations: ["send"]

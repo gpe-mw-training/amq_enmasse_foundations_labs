@@ -39,5 +39,5 @@ container.on('message', function (context) {
 });
 
 
-container.connect({port:args.port,host:"messaging-std-mt-std-mt.127.0.0.1.nip.io", username:'developer', password:'abcd', transport:'tls',rejectUnauthorized:false}).open_receiver({source:args.node, snd_settle_mode:0});
+container.connect({port:args.port,host:"messaging-db8482f-amq-online-infra.apps.cluster-76bb.76bb.example.opentlc.com", username:'user1', password:'password', transport:'tls',rejectUnauthorized:false}).open_receiver({source:args.node, snd_settle_mode:0});
 
